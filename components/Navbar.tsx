@@ -360,15 +360,6 @@ export default function Navbar() {
               <Layers className="w-4 h-4 text-purple-400" />
               <span>Compare Companies</span>
             </Link>
-
-            <Link
-              href="/#team"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
-            >
-              <Users className="w-4 h-4 text-amber-400" />
-              <span>Core Committee</span>
-            </Link>
           </div>
 
           <div className="border-t border-purple-900/40 pt-3 flex flex-col gap-2">

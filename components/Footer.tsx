@@ -96,8 +96,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#team" className="hover:text-amber-300 transition-colors">
-                  Core Committee
+                <Link href="/company/compare" className="hover:text-amber-300 transition-colors">
+                  Compare Companies
                 </Link>
               </li>
             </ul>

@@ -503,35 +503,7 @@ export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
   }
 ];
 
-export const INITIAL_TEAM: TeamMemberItem[] = [
-  {
-    id: 'team-core-1',
-    name: 'AISHWARYA S L',
-    designation: 'APTI CLUB Core Member & Student Lead',
-    wing: 'Club Head',
-    department: 'GSSSIETW',
-    year: '2026 Batch',
-    initials: 'AS'
-  },
-  {
-    id: 'team-core-2',
-    name: 'CHINMAYI S',
-    designation: 'APTI CLUB Core Member & Technical Lead',
-    wing: 'Club Head',
-    department: 'GSSSIETW',
-    year: '2026 Batch',
-    initials: 'CS'
-  },
-  {
-    id: 'team-core-3',
-    name: 'RACHANA N',
-    designation: 'APTI CLUB Core Member & Operations Lead',
-    wing: 'Club Head',
-    department: 'GSSSIETW',
-    year: '2026 Batch',
-    initials: 'RN'
-  }
-];
+export const INITIAL_TEAM: TeamMemberItem[] = [];
 
 export const INITIAL_RESOURCES: PreparationResourceItem[] = [
   // Aptitude

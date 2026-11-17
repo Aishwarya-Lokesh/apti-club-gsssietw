@@ -18,14 +18,12 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
     id: 'kb-apti-club-identity',
     category: 'identity',
     topic: 'About APTI CLUB – GSSSIETW',
-    keywords: ['apti club', 'gsss', 'gsssietw', 'about', 'motto', 'mission', 'vision', 'college', 'mysuru', 'leaders', 'team', 'members', 'instagram'],
+    keywords: ['apti club', 'gsss', 'gsssietw', 'about', 'motto', 'mission', 'vision', 'college', 'mysuru', 'instagram'],
     questionPatterns: [
       'what is apti club',
       'about apti club',
-      'who are the core members of apti club',
       'apti club instagram',
       'what is the motto of apti club',
-      'who leads apti club',
       'tell me about apti club gsssietw'
     ],
     answer: `### APTI CLUB – GSSS Institute of Engineering and Technology for Women (GSSSIETW), Mysuru
@@ -37,19 +35,14 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
 - **Official Instagram:** [@apticlub_gsss](https://www.instagram.com/apticlub_gsss/) — Follow for drive alerts, event recaps, and live quizzes.
 - **Official Contact Email:** \`apticlub@gsss.edu.in\`
 
-#### Core Leadership Committee (2026–2027):
-1. **AISHWARYA S L** — Core Committee Member & Lead Coordinator
-2. **CHINMAYI S** — Core Committee Member & Technical Coordinator
-3. **RACHANA N** — Core Committee Member & Assessment Coordinator
-
 #### The Four Core Wings:
 - **Aptitude Wing:** Speed-math calculation strategies, quantitative problem-solving, and logical deduction.
 - **Personality Wing:** Communication excellence, public speaking, group discussions, and body language.
 - **Technical Wing:** Data Structures & Algorithms, DBMS, OOPs, System Architecture, and Core CS.
 - **Interview Wing:** Real-world mock drives, STAR behavioral framework, and resume defenses.`,
     source: 'APTI CLUB Institutional Charter & Constitution 2026, GSSSIETW',
-    actionUrl: '/#team',
-    actionText: 'Meet Core Committee'
+    actionUrl: '/',
+    actionText: 'Explore APTI CLUB'
   },
   {
     id: 'kb-five-year-chronicles',
@@ -599,7 +592,7 @@ While I cannot assist with non-career topics like that, here is how I can help y
       suggestedQuestions: [
         'How to start DSA from scratch?',
         'What are the eligibility criteria for Deutsche Bank?',
-        'Tell me about APTI CLUB and its core committee'
+        'Tell me about APTI CLUB and its Four Wings'
       ]
     };
   }
@@ -695,7 +688,7 @@ While I cannot assist with non-career topics like that, here is how I can help y
 2. **Company Dossiers:** Ask *"What are the eligibility criteria for Deutsche Bank?"* or *"Accenture interview rounds"*.
 3. **Aptitude Wing:** Ask *"Aptitude preparation blueprint"* or *"Speed-math calculation shortcuts"*.
 4. **Behavioral:** Ask *"How to answer HR questions using STAR method?"*.
-5. **APTI CLUB:** Ask *"Tell me about APTI CLUB and its core committee"* or *"Where can I read the 5-year chronicles?"*.`,
+5. **APTI CLUB:** Ask *"Tell me about APTI CLUB and its Four Wings"* or *"Where can I read the 5-year chronicles?"*.`,
     source: 'GSSSIETW Placement Helpdesk Reference',
     confidence: 'low',
     suggestedQuestions: [
@@ -716,7 +709,7 @@ function getRelatedQuestions(currentId: string): string[] {
     'kb-five-year-chronicles': [
       'What are the eligibility criteria for Deutsche Bank?',
       'How to answer HR questions using STAR method?',
-      'Tell me about APTI CLUB and its core committee'
+      'Tell me about APTI CLUB and its Four Wings'
     ],
     'kb-dsa-roadmap': [
       'Difference between Array and Linked List',

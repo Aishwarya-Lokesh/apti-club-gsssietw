@@ -49,36 +49,6 @@ export default function HomePage() {
     window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
   };
 
-  const coreTeamMembers = [
-    {
-      name: 'AISHWARYA S L',
-      role: 'Core Committee • Student Lead',
-      department: 'GSSSIETW, Mysuru',
-      academicYear: 'Batch 2026',
-      initials: 'AS',
-      bio: 'Leading club strategy, campus drives readiness, and student career mentorship.',
-      badge: 'Core Lead'
-    },
-    {
-      name: 'CHINMAYI S',
-      role: 'Core Committee • Technical & Events Lead',
-      department: 'GSSSIETW, Mysuru',
-      academicYear: 'Batch 2026',
-      initials: 'CS',
-      bio: 'Orchestrating technical coding sprints, assessment simulations, and workshop coordination.',
-      badge: 'Technical Lead'
-    },
-    {
-      name: 'RACHANA N',
-      role: 'Core Committee • Operations & Editorial Lead',
-      department: 'GSSSIETW, Mysuru',
-      academicYear: 'Batch 2026',
-      initials: 'RN',
-      bio: 'Curating annual placement chronicles, alumni interview dossiers, and student outreach.',
-      badge: 'Operations Lead'
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-[#070417] text-slate-100 flex flex-col">
       
@@ -693,73 +663,40 @@ export default function HomePage() {
 
         </div>
 
-        {/* 6. CORE COMMITTEE SECTION (EXACT 3 MEMBERS REQUIRED BY USER) */}
-        <section id="team" className="p-6 sm:p-8 rounded-3xl bg-card-luxury border border-purple-700/40 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-purple-900/40">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-300 shrink-0">
-                <Users className="w-6 h-6" />
-              </div>
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-amber-400">
-                  GSSSIETW • Department of Training &amp; Placement
-                </span>
-                <h3 className="font-serif font-bold text-2xl text-white">
-                  APTI CLUB Core Committee
-                </h3>
-              </div>
+        {/* 6. OFFICIAL COMMUNITY & CONNECT BANNER */}
+        <section className="p-6 sm:p-8 rounded-3xl bg-card-luxury border border-purple-700/40 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+            <div className="space-y-2 max-w-2xl">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-amber-400">
+                Department of Training &amp; Placement • GSSSIETW, Mysuru
+              </span>
+              <h3 className="font-serif font-bold text-2xl text-white">
+                Stay Connected with APTI CLUB
+              </h3>
+              <p className="text-xs text-purple-200/80 leading-relaxed font-light">
+                Follow our official institutional channel for real-time announcements, mock drive schedules, assessment links, and campus recruitment updates.
+              </p>
             </div>
 
-            <a
-              href="https://www.instagram.com/apticlub_gsss/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-purple-900/60 to-pink-900/50 hover:from-purple-800 hover:to-pink-700 text-slate-200 hover:text-white text-xs font-semibold border border-purple-700/50 transition-all shadow-md self-start sm:self-auto"
-            >
-              <span>Follow @apticlub_gsss on Instagram</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {coreTeamMembers.map((member, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl bg-[#0f092b] border border-purple-800/50 hover:border-amber-400/50 transition-all flex flex-col justify-between space-y-4 group"
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <a
+                href="https://www.instagram.com/apticlub_gsss/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 hover:brightness-110 text-white text-xs font-bold shadow-lg shadow-purple-900/30 transition-all"
               >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-bold text-lg flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-                      {member.initials}
-                    </div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-300 border border-amber-400/30">
-                      {member.badge}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h4 className="text-base font-bold text-white group-hover:text-amber-200 transition-colors">
-                      {member.name}
-                    </h4>
-                    <p className="text-xs text-amber-400/90 font-medium mt-0.5">
-                      {member.role}
-                    </p>
-                    <p className="text-[11px] text-purple-200/70 mt-0.5">
-                      {member.department} • {member.academicYear}
-                    </p>
-                  </div>
-
-                  <p className="text-xs text-slate-300/80 leading-relaxed pt-1">
-                    {member.bio}
-                  </p>
-                </div>
-
-                <div className="pt-3 border-t border-purple-900/40 flex items-center justify-between text-[11px] text-purple-300/80">
-                  <span>APTI CLUB • GSSSIETW</span>
-                  <span className="text-amber-400 font-semibold">Core Lead</span>
-                </div>
-              </div>
-            ))}
+                <span>Follow @apticlub_gsss on Instagram</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="mailto:apticlub@gsss.edu.in"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-purple-950/60 hover:bg-purple-900/80 text-purple-200 hover:text-white text-xs font-semibold border border-purple-700/50 transition-all"
+              >
+                <span>apticlub@gsss.edu.in</span>
+              </a>
+            </div>
           </div>
         </section>
 
