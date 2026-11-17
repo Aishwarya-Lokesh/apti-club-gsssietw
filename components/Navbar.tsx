@@ -172,6 +172,18 @@ export default function Navbar() {
               Events
             </Link>
 
+            {/* Dashboard Link for Students */}
+            <Link
+              href="/dashboard"
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                isActive('/dashboard')
+                  ? 'text-amber-300 bg-purple-900/40 border border-purple-700/50'
+                  : 'text-slate-300 hover:text-white hover:bg-purple-900/30'
+              }`}
+            >
+              <span>Dashboard</span>
+            </Link>
+
             {/* Placement Hub */}
             <Link
               href="/placement-hub"
@@ -222,26 +234,40 @@ export default function Navbar() {
               </button>
 
               {moreDropdownOpen && (
-                <div className="absolute top-full right-0 mt-1 w-52 rounded-2xl bg-[#0f092b] border border-purple-500/30 shadow-2xl p-2 backdrop-blur-xl z-50">
+                <div className="absolute top-full right-0 mt-1 w-56 rounded-2xl bg-[#0f092b] border border-purple-500/30 shadow-2xl p-2 backdrop-blur-xl z-50">
+                  <Link
+                    href="/company/compare"
+                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-purple-900/40 text-xs text-slate-200 hover:text-amber-200"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Compare Companies</span>
+                  </Link>
+                  <Link
+                    href="/placement-hub/submit-report"
+                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-purple-900/40 text-xs text-slate-200 hover:text-amber-200"
+                  >
+                    <FileText className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Submit Experience Report</span>
+                  </Link>
+                  <Link
+                    href="/teacher"
+                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-purple-900/40 text-xs text-slate-200 hover:text-amber-200"
+                  >
+                    <Users className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Teacher / Coordinator Portal</span>
+                  </Link>
                   <Link
                     href="/placement-hub#roadmap"
                     className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-purple-900/40 text-xs text-slate-200 hover:text-amber-200"
                   >
-                    <MapPin className="w-3.5 h-3.5 text-amber-400" />
+                    <MapPin className="w-3.5 h-3.5 text-purple-400" />
                     <span>Placement Roadmap</span>
-                  </Link>
-                  <Link
-                    href="/wings/interview#resume-guide"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-purple-900/40 text-xs text-slate-200 hover:text-amber-200"
-                  >
-                    <FileText className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Resume Essentials</span>
                   </Link>
                   <Link
                     href="/about"
                     className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-purple-900/40 text-xs text-slate-200 hover:text-amber-200"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                    <Sparkles className="w-3.5 h-3.5 text-purple-400" />
                     <span>About APTI CLUB</span>
                   </Link>
                 </div>
@@ -340,6 +366,15 @@ export default function Navbar() {
 
           <div className="border-t border-purple-900/40 pt-2 space-y-1">
             <Link
+              href="/dashboard"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold text-amber-300 hover:bg-purple-900/40"
+            >
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <span>Student Dashboard</span>
+            </Link>
+
+            <Link
               href="/events"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
@@ -355,6 +390,33 @@ export default function Navbar() {
             >
               <Sparkles className="w-4 h-4 text-amber-400" />
               <span>Placement Hub</span>
+            </Link>
+
+            <Link
+              href="/company/compare"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
+            >
+              <Sparkles className="w-4 h-4 text-purple-400" />
+              <span>Compare Companies</span>
+            </Link>
+
+            <Link
+              href="/placement-hub/submit-report"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
+            >
+              <FileText className="w-4 h-4 text-purple-400" />
+              <span>Submit Report</span>
+            </Link>
+
+            <Link
+              href="/teacher"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
+            >
+              <Users className="w-4 h-4 text-purple-400" />
+              <span>Teacher Portal</span>
             </Link>
 
             <Link

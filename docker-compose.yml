@@ -1,0 +1,75 @@
+services:
+  # 1. MySQL 8 Database Service
+  mysql_db:
+    image: mysql:8.0
+    container_name: apti_mysql_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-apti_root_secure_2026!}
+      MYSQL_DATABASE: ${DB_NAME:-apti_placement_db}
+      MYSQL_USER: ${DB_USER:-apti_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-apti_secure_pass_2026!}
+      TZ: Asia/Kolkata
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - apti_net
+
+  # 2. Next.js 16 Web Application Service
+  web_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: apti_web_app
+    restart: unless-stopped
+    depends_on:
+      mysql_db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DB_HOST: mysql_db
+      DB_PORT: 3306
+      DB_USER: ${DB_USER:-apti_user}
+      DB_PASSWORD: ${DB_PASSWORD:-apti_secure_pass_2026!}
+      DB_NAME: ${DB_NAME:-apti_placement_db}
+      JWT_SECRET: ${JWT_SECRET:-apti_gsss_secure_jwt_token_secret_key_2026}
+    volumes:
+      - app_uploads:/app/public/uploads
+    networks:
+      - apti_net
+
+  # 3. Nginx Reverse Proxy with SSL & Security Headers
+  nginx:
+    image: nginx:alpine
+    container_name: apti_nginx_proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - app_uploads:/var/www/uploads:ro
+    depends_on:
+      - web_app
+    networks:
+      - apti_net
+
+volumes:
+  mysql_data:
+    driver: local
+  app_uploads:
+    driver: local
+
+networks:
+  apti_net:
+    driver: bridge

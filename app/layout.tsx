@@ -3,6 +3,7 @@ import './globals.css';
 import { StoreProvider } from '@/lib/store';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PlacementChatbot from '@/components/PlacementChatbot';
 import { Suspense } from 'react';
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default function RootLayout({
               {children}
             </Suspense>
           </div>
+          <PlacementChatbot />
           <Footer />
         </StoreProvider>
       </body>
