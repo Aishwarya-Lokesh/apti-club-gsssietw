@@ -18,7 +18,9 @@ import {
   FileText, 
   Calendar, 
   Sparkles,
-  MapPin
+  BookOpen,
+  Layers,
+  GraduationCap
 } from 'lucide-react';
 import NotificationDropdown from './NotificationDropdown';
 import { useStore } from '@/lib/store';
@@ -28,7 +30,6 @@ export default function Navbar() {
   const { isAdmin } = useStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [wingsDropdownOpen, setWingsDropdownOpen] = useState(false);
-  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
 
   const isActive = (path: string) => {
     if (path === '/' && pathname === '/') return true;
@@ -37,17 +38,18 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-[#070417]/90 border-b border-purple-900/30">
+    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-[#070417]/90 border-b border-purple-900/40 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Left: Brand Logo & College Header */}
+          {/* Left: Dual Branding (APTI CLUB Logo + GSSSIETW College Logo) */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-amber-400 via-purple-500 to-amber-200 shadow-md shadow-purple-950/50 group-hover:scale-105 transition-transform overflow-hidden">
-              <div className="w-full h-full rounded-full bg-[#140b2f] flex items-center justify-center overflow-hidden">
+            {/* Official APTI CLUB Logo */}
+            <div className="relative w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-amber-400 via-purple-500 to-amber-200 shadow-md shadow-purple-950/60 group-hover:scale-105 transition-transform overflow-hidden shrink-0">
+              <div className="w-full h-full rounded-full bg-[#120a2e] flex items-center justify-center overflow-hidden">
                 <Image
                   src="/assets/apti-logo.png"
-                  alt="APTI CLUB Logo"
+                  alt="APTI CLUB Official Logo"
                   width={44}
                   height={44}
                   className="object-contain"
@@ -55,28 +57,42 @@ export default function Navbar() {
                 />
               </div>
             </div>
+
+            {/* Official GSSSIETW College Emblem */}
+            <div className="hidden sm:flex w-10 h-10 rounded-xl bg-white/5 border border-purple-700/40 p-1 items-center justify-center group-hover:border-amber-400/50 transition-colors shrink-0">
+              <Image
+                src="/assets/gsss-logo.png"
+                alt="GSSSIETW College Emblem"
+                width={36}
+                height={36}
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            {/* Text Identity */}
             <div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2">
                 <span className="font-serif tracking-wider font-extrabold text-lg text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-300 to-yellow-400">
                   APTI CLUB
                 </span>
-                <span className="text-[10px] uppercase tracking-widest px-1.5 py-0.2 rounded bg-amber-400/10 text-amber-300 border border-amber-400/20 font-semibold">
-                  T&P
+                <span className="text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-amber-400/10 text-amber-300 border border-amber-400/20 font-semibold font-mono">
+                  GSSSIETW
                 </span>
               </div>
-              <p className="text-[11px] text-purple-200/80 font-medium tracking-tight">
-                GSSSIETW, Mysuru
+              <p className="text-[10px] text-purple-200/90 font-medium tracking-tight truncate max-w-[200px] sm:max-w-xs">
+                GSSS Institute of Engineering and Technology for Women
               </p>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
             
             {/* Home Pill */}
             <Link
               href="/"
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                 isActive('/')
                   ? 'bg-gradient-to-r from-amber-300 to-amber-400 text-slate-950 shadow-md shadow-amber-400/20 font-bold'
                   : 'text-slate-300 hover:text-white hover:bg-purple-900/30'
@@ -114,7 +130,7 @@ export default function Navbar() {
                     </div>
                     <div>
                       <p className="text-xs font-semibold">Aptitude Wing</p>
-                      <p className="text-[10px] text-slate-400">Quant, Logical, Verbal, Perspect AI</p>
+                      <p className="text-[10px] text-slate-400">Quant, Logical, Speed-Math</p>
                     </div>
                   </Link>
 
@@ -153,7 +169,7 @@ export default function Navbar() {
                     </div>
                     <div>
                       <p className="text-xs font-semibold">Interview Wing</p>
-                      <p className="text-[10px] text-slate-400">HR, Resume, Virtual Hiring Check</p>
+                      <p className="text-[10px] text-slate-400">STAR HR, Resume, Behaviour</p>
                     </div>
                   </Link>
                 </div>
@@ -172,18 +188,6 @@ export default function Navbar() {
               Events
             </Link>
 
-            {/* Dashboard Link for Students */}
-            <Link
-              href="/dashboard"
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                isActive('/dashboard')
-                  ? 'text-amber-300 bg-purple-900/40 border border-purple-700/50'
-                  : 'text-slate-300 hover:text-white hover:bg-purple-900/30'
-              }`}
-            >
-              <span>Dashboard</span>
-            </Link>
-
             {/* Placement Hub */}
             <Link
               href="/placement-hub"
@@ -196,7 +200,7 @@ export default function Navbar() {
               Placement Hub
             </Link>
 
-            {/* Chronicles */}
+            {/* Chronicles (5 Years) */}
             <Link
               href="/chronicles"
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
@@ -205,87 +209,43 @@ export default function Navbar() {
                   : 'text-slate-300 hover:text-white hover:bg-purple-900/30'
               }`}
             >
-              Chronicles
+              Chronicles (5 Years)
             </Link>
 
-            {/* Our Team */}
+            {/* Compare Companies */}
             <Link
-              href="/team"
+              href="/company/compare"
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                isActive('/team')
+                isActive('/company/compare')
                   ? 'text-amber-300 bg-purple-900/40 border border-purple-700/50'
                   : 'text-slate-300 hover:text-white hover:bg-purple-900/30'
               }`}
             >
-              Our Team
+              Compare
             </Link>
-
-            {/* More Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setMoreDropdownOpen(true)}
-              onMouseLeave={() => setMoreDropdownOpen(false)}
-            >
-              <button
-                className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-purple-900/30 transition-all"
-              >
-                <span>More</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${moreDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              {moreDropdownOpen && (
-                <div className="absolute top-full right-0 mt-1 w-56 rounded-2xl bg-[#0f092b] border border-purple-500/30 shadow-2xl p-2 backdrop-blur-xl z-50">
-                  <Link
-                    href="/company/compare"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-purple-900/40 text-xs text-slate-200 hover:text-amber-200"
-                  >
-                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Compare Companies</span>
-                  </Link>
-                  <Link
-                    href="/placement-hub/submit-report"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-purple-900/40 text-xs text-slate-200 hover:text-amber-200"
-                  >
-                    <FileText className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Submit Experience Report</span>
-                  </Link>
-                  <Link
-                    href="/teacher"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-purple-900/40 text-xs text-slate-200 hover:text-amber-200"
-                  >
-                    <Users className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Teacher / Coordinator Portal</span>
-                  </Link>
-                  <Link
-                    href="/placement-hub#roadmap"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-purple-900/40 text-xs text-slate-200 hover:text-amber-200"
-                  >
-                    <MapPin className="w-3.5 h-3.5 text-purple-400" />
-                    <span>Placement Roadmap</span>
-                  </Link>
-                  <Link
-                    href="/about"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-purple-900/40 text-xs text-slate-200 hover:text-amber-200"
-                  >
-                    <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-                    <span>About APTI CLUB</span>
-                  </Link>
-                </div>
-              )}
-            </div>
 
           </nav>
 
-          {/* Right Action Buttons */}
-          <div className="flex items-center gap-3">
+          {/* Right Action Area: Notifications + ONLY 2 Logins (Student & Admin) */}
+          <div className="flex items-center gap-2 sm:gap-3">
             <NotificationDropdown />
 
+            {/* 1. Student Login */}
+            <Link
+              href="/dashboard"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-purple-900/40 hover:bg-purple-800/60 text-purple-200 hover:text-white border border-purple-700/50 transition-all shadow-sm"
+            >
+              <GraduationCap className="w-3.5 h-3.5 text-amber-300" />
+              <span>Student Login</span>
+            </Link>
+
+            {/* 2. Admin Login */}
             <Link
               href="/admin"
-              className={`hidden sm:flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold transition-all border ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all border ${
                 isAdmin 
                   ? 'bg-purple-900/60 text-emerald-300 border-emerald-500/40 hover:bg-purple-900/80'
-                  : 'bg-gradient-to-r from-purple-900/40 to-[#1b103e] text-amber-300 border-amber-400/40 hover:border-amber-300 hover:shadow-md hover:shadow-amber-400/10'
+                  : 'bg-gradient-to-r from-amber-400 to-amber-500 hover:brightness-110 text-slate-950 font-bold shadow-md shadow-amber-500/20'
               }`}
             >
               {isAdmin ? (
@@ -295,7 +255,7 @@ export default function Navbar() {
                 </>
               ) : (
                 <>
-                  <Lock className="w-3.5 h-3.5 text-amber-300" />
+                  <Lock className="w-3.5 h-3.5 text-slate-950" />
                   <span>Admin Login</span>
                 </>
               )}
@@ -304,7 +264,7 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-purple-900/40"
+              className="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-purple-900/40"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -316,7 +276,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0d0729] border-b border-purple-900/50 px-4 pt-3 pb-6 space-y-2 animate-in fade-in slide-in-from-top-4">
+        <div className="lg:hidden bg-[#0d0729] border-b border-purple-900/50 px-4 pt-3 pb-6 space-y-2 animate-in fade-in slide-in-from-top-4">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
@@ -366,15 +326,6 @@ export default function Navbar() {
 
           <div className="border-t border-purple-900/40 pt-2 space-y-1">
             <Link
-              href="/dashboard"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold text-amber-300 hover:bg-purple-900/40"
-            >
-              <Sparkles className="w-4 h-4 text-amber-400" />
-              <span>Student Dashboard</span>
-            </Link>
-
-            <Link
               href="/events"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
@@ -393,59 +344,50 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/company/compare"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
-            >
-              <Sparkles className="w-4 h-4 text-purple-400" />
-              <span>Compare Companies</span>
-            </Link>
-
-            <Link
-              href="/placement-hub/submit-report"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
-            >
-              <FileText className="w-4 h-4 text-purple-400" />
-              <span>Submit Report</span>
-            </Link>
-
-            <Link
-              href="/teacher"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
-            >
-              <Users className="w-4 h-4 text-purple-400" />
-              <span>Teacher Portal</span>
-            </Link>
-
-            <Link
               href="/chronicles"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
             >
-              <FileText className="w-4 h-4 text-amber-400" />
-              <span>Chronicles Archive</span>
+              <BookOpen className="w-4 h-4 text-amber-400" />
+              <span>Chronicles (5 Years)</span>
             </Link>
 
             <Link
-              href="/team"
+              href="/company/compare"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
+            >
+              <Layers className="w-4 h-4 text-purple-400" />
+              <span>Compare Companies</span>
+            </Link>
+
+            <Link
+              href="/#team"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-purple-900/40 hover:text-amber-300"
             >
               <Users className="w-4 h-4 text-amber-400" />
-              <span>Our Team</span>
+              <span>Core Committee</span>
             </Link>
           </div>
 
-          <div className="pt-2">
+          <div className="border-t border-purple-900/40 pt-3 flex flex-col gap-2">
+            <Link
+              href="/dashboard"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-purple-900/50 text-xs font-semibold text-white border border-purple-700/50"
+            >
+              <GraduationCap className="w-4 h-4 text-amber-300" />
+              <span>Student Login</span>
+            </Link>
+
             <Link
               href="/admin"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-bold text-xs"
+              className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-xs font-bold text-slate-950"
             >
-              <Lock className="w-3.5 h-3.5" />
-              <span>{isAdmin ? 'Open Admin Portal' : 'Admin Login'}</span>
+              <Lock className="w-4 h-4 text-slate-950" />
+              <span>Admin Login</span>
             </Link>
           </div>
         </div>

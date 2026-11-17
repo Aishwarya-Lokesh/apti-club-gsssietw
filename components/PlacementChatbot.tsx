@@ -43,10 +43,10 @@ export default function PlacementChatbot() {
     }
   ]);
   const [suggestedQuestions, setSuggestedQuestions] = useState<string[]>([
-    'How do I register for a placement drive?',
+    'How to start DSA from scratch?',
     'What are the eligibility criteria for Deutsche Bank?',
-    'What technical skills are commonly tested?',
-    'How to upload my placement experience?'
+    'Difference between Array and Linked List',
+    'How to answer HR questions using STAR method?'
   ]);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -80,7 +80,10 @@ export default function PlacementChatbot() {
       const res = await fetch('/api/chatbot', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: queryText })
+        body: JSON.stringify({ 
+          query: queryText,
+          history: messages.slice(-6).map(m => ({ sender: m.sender, text: m.text }))
+        })
       });
 
       const data = await res.json();

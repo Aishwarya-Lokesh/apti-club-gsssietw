@@ -13,7 +13,8 @@ import {
   ArrowRight, 
   Sparkles, 
   ArrowLeft,
-  CheckCircle2
+  CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { EventItem } from '@/types';
@@ -198,6 +199,17 @@ export default function EventsPage() {
                         {evt.description}
                       </p>
                     </div>
+
+                    {/* Schedule Revision Notice */}
+                    {evt.isRevised && (
+                      <div className="p-2.5 rounded-xl bg-amber-400/10 border border-amber-400/30 text-[11px] text-amber-300 flex items-start gap-2">
+                        <AlertCircle className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                        <div>
+                          <p className="font-bold">Schedule / Venue Revised</p>
+                          <p className="text-[10px] text-purple-200/90">{evt.lastRevisionSummary || 'Updated by coordinator.'}</p>
+                        </div>
+                      </div>
+                    )}
 
                     {/* Date / Time / Venue metadata */}
                     <div className="space-y-1.5 text-xs text-purple-200/90 pt-1">

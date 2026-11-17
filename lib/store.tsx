@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { 
   EventItem, 
+  EventRevision,
   RegistrationItem, 
   CompanyItem, 
   InterviewExperienceItem, 
@@ -84,6 +85,16 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [browserNotificationsAllowed, setBrowserNotificationsAllowed] = useState<boolean>(false);
 
+  // 15-day retention policy filter
+  const FIFTEEN_DAYS_MS = 15 * 24 * 60 * 60 * 1000;
+  const filterRecentNotifications = (items: NotificationItem[]): NotificationItem[] => {
+    const now = Date.now();
+    return items.filter(n => {
+      if (!n.createdTimestamp) return true; // Retain system default initial notifications
+      return (now - n.createdTimestamp) <= FIFTEEN_DAYS_MS;
+    });
+  };
+
   // Initialize from LocalStorage if available
   useEffect(() => {
     try {
@@ -103,7 +114,10 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       if (storedChronicles) setChronicles(JSON.parse(storedChronicles));
 
       const storedNotifications = localStorage.getItem('apti_notifications');
-      if (storedNotifications) setNotifications(JSON.parse(storedNotifications));
+      if (storedNotifications) {
+        const parsed = JSON.parse(storedNotifications);
+        setNotifications(filterRecentNotifications(parsed));
+      }
 
       const storedTeam = localStorage.getItem('apti_team');
       if (storedTeam) setTeam(JSON.parse(storedTeam));
@@ -184,6 +198,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       id: `reg-${Date.now()}`,
       eventId,
       eventTitle: targetEvent.title,
+      status: 'Confirmed',
       ...studentData,
       createdAt: new Date().toISOString()
     };
@@ -239,7 +254,55 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   };
 
   const updateEvent = (id: string, updated: Partial<EventItem>) => {
-    const updatedList = events.map(e => e.id === id ? { ...e, ...updated } : e);
+    const existing = events.find(e => e.id === id);
+    if (!existing) return;
+
+    // Detect modifications to schedule or venue
+    const changes: string[] = [];
+    if (updated.venue && updated.venue !== existing.venue) {
+      changes.push(`Venue relocated to "${updated.venue}" (was "${existing.venue}")`);
+    }
+    if (updated.date && updated.date !== existing.date) {
+      changes.push(`Date changed to "${updated.date}" (was "${existing.date}")`);
+    }
+    if (updated.time && updated.time !== existing.time) {
+      changes.push(`Timing rescheduled to "${updated.time}" (was "${existing.time}")`);
+    }
+
+    let revisionHistory = existing.revisionHistory || [];
+    let isRevised = existing.isRevised || false;
+    let lastRevisionSummary = existing.lastRevisionSummary || '';
+
+    if (changes.length > 0) {
+      const summary = changes.join('; ');
+      const newRevision: EventRevision = {
+        id: `rev-${Date.now()}`,
+        editedAt: new Date().toLocaleString(),
+        changeSummary: summary,
+        previousVenue: existing.venue,
+        previousDate: existing.date,
+        previousTime: existing.time
+      };
+      revisionHistory = [newRevision, ...revisionHistory];
+      isRevised = true;
+      lastRevisionSummary = summary;
+
+      // Broadcast update notification to registered students and club members
+      broadcastNotification({
+        title: `Schedule Revision: ${existing.title}`,
+        message: `Notice: ${summary}. Please check the updated event details.`,
+        category: 'event',
+        link: '/events'
+      });
+    }
+
+    const updatedList = events.map(e => e.id === id ? { 
+      ...e, 
+      ...updated,
+      revisionHistory,
+      isRevised,
+      lastRevisionSummary 
+    } : e);
     setEvents(updatedList);
     saveStorage('apti_events', updatedList);
   };
@@ -439,12 +502,13 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     const newNotif: NotificationItem = {
       id: `notif-${Date.now()}`,
       createdAt: 'Just now',
+      createdTimestamp: Date.now(),
       isRead: false,
       ...notifData
     };
-    const updated = [newNotif, ...notifications];
-    setNotifications(updated);
-    saveStorage('apti_notifications', updated);
+    const prunedList = filterRecentNotifications([newNotif, ...notifications]);
+    setNotifications(prunedList);
+    saveStorage('apti_notifications', prunedList);
 
     if (browserNotificationsAllowed && typeof window !== 'undefined' && 'Notification' in window) {
       try {

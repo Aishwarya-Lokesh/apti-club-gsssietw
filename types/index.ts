@@ -1,3 +1,12 @@
+export interface EventRevision {
+  id: string;
+  editedAt: string;
+  changeSummary: string;
+  previousVenue?: string;
+  previousDate?: string;
+  previousTime?: string;
+}
+
 export interface EventItem {
   id: string;
   title: string;
@@ -15,6 +24,9 @@ export interface EventItem {
   description: string;
   keyTakeaways: string[];
   whatsAppTemplate?: string;
+  isRevised?: boolean;
+  lastRevisionSummary?: string;
+  revisionHistory?: EventRevision[];
 }
 
 export interface RegistrationItem {
@@ -27,6 +39,7 @@ export interface RegistrationItem {
   year: string;
   email: string;
   phone: string;
+  status?: 'Confirmed' | 'Attended' | 'Waitlisted' | 'Cancelled';
   createdAt: string;
 }
 
@@ -108,6 +121,7 @@ export interface NotificationItem {
   link: string;
   isRead: boolean;
   createdAt: string;
+  createdTimestamp?: number;
 }
 
 export interface TeamMemberItem {

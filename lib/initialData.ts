@@ -357,64 +357,106 @@ export const INITIAL_EXPERIENCES: InterviewExperienceItem[] = [
 export const INITIAL_CHRONICLES: ChronicleItem[] = [
   {
     id: 'chronicle-2026',
-    title: 'Career Catalyst Vol. 2 (2026 Batch)',
-    edition: 'Volume 2',
+    title: 'Career Catalyst Vol. 5 (2026 Batch)',
+    edition: 'Volume 5',
     academicYear: '2026–2027',
-    coverImageUrl: '/assets/career-catalyst-2026-cover.png',
-    pdfUrl: '/assets/career_catalyst_vol2.pdf',
-    description: 'The definitive placement preparation guide curated by senior students of GSSSIETW. Features comprehensive roadmaps for Aptitude, Professional Readiness, Pre-Interview Research, Technical Foundations, DSA, Core Subjects, and mistakes to avoid.',
-    pagesCount: 28,
-    publishedAt: 'November 2026',
+    coverImageUrl: '/chronicles/cover_2026.png',
+    pdfUrl: '/chronicles/chronicle_2026.pdf',
+    description: 'The flagship 2026 annual placement chronicle curated by APTI CLUB GSSSIETW. Features 64 pages of comprehensive roadmaps for Aptitude, Professional Readiness, Technical Foundations, DSA, Core Subjects, and verified student interview dossiers.',
+    pagesCount: 64,
+    publishedAt: '2026',
     highlights: [
-      'Apti Section: Verbal, Quant, Logical, Gamification, Perspect AI, Electro Quiz',
-      'Professional Readiness: Resume Essentials, Interview Behaviour Check',
-      'Pre-Interview Research & Virtual Hiring Tech Checklist',
-      'Technical Roadmap from Beginner to Placement Ready',
-      'Core Subjects: OOPs, DBMS, OS, CN, SDLC with curated links',
-      'Final Note from Senior Vennela Chowdary'
+      'Comprehensive 4 Wings: Aptitude, Personality, Technical, Interview',
+      'Detailed company dossiers: Deutsche Bank, Accenture, Infosys',
+      'Core Subjects: OOPs, DBMS, OS, CN, SDLC with curated question banks',
+      'Real candidate interview transcripts and selection tips'
     ],
-    contributors: [
-      'E Vennela Chowdary (Dept. of CSE)',
-      'Habeeba (Dept. of CSE)',
-      'Likhitha G (Dept. of CSE)',
-      'Anagha G Adiga (Dept. of CSE)',
-      'Kushi B G (Dept. of CSE)',
-      'Shibha Shetty (Dept. of CSE-AI&ML)'
-    ]
+    contributors: ['APTI CLUB Core Committee 2026']
   },
   {
     id: 'chronicle-2025',
-    title: 'Career Catalyst Vol. 1 (2025 Batch)',
-    edition: 'Volume 1',
+    title: 'Career Catalyst Vol. 4 (2025 Batch)',
+    edition: 'Volume 4',
     academicYear: '2025–2026',
-    coverImageUrl: '/assets/career-catalyst-2026-cover.png',
-    pdfUrl: '/assets/career_catalyst_vol2.pdf',
-    description: 'The inaugural edition of Career Catalyst capturing placement insights, company questions, and interview trends from 2025 recruitment drives.',
-    pagesCount: 24,
-    publishedAt: 'August 2025',
+    coverImageUrl: '/chronicles/cover_2025.png',
+    pdfUrl: '/chronicles/chronicle_2025.pdf',
+    description: 'The 2025 recruitment edition capturing tier-1 company selection workflows, aptitude benchmarks, technical interviews, and alumni preparation strategies.',
+    pagesCount: 32,
+    publishedAt: '2025',
     highlights: [
-      'Foundational placement guide',
+      'Foundational placement guide & formula bank',
       'Company profiles and interview round breakdowns',
-      'Aptitude formula bank'
+      'Aptitude shortcuts & speed-math drills'
     ],
-    contributors: ['APTI CLUB 2025 Senior Editorial Team']
+    contributors: ['APTI CLUB Senior Editorial Team 2025']
   },
   {
     id: 'chronicle-2024',
-    title: 'Career Catalyst - Foundation Edition',
-    edition: 'Genesis Issue',
+    title: 'APTI Chronicle Vol. 3 (2024 Batch)',
+    edition: 'Volume 3',
     academicYear: '2024–2025',
-    coverImageUrl: '/assets/career-catalyst-2026-cover.png',
-    pdfUrl: '/assets/career_catalyst_vol2.pdf',
-    description: 'The origin edition establishing the Four Wings framework: Aptitude, Personality, Technical, and Interview preparation.',
-    pagesCount: 18,
-    publishedAt: 'October 2024',
+    coverImageUrl: '/chronicles/cover_2024.png',
+    pdfUrl: '/chronicles/chronicle_2024.pdf',
+    description: 'A 61-page edition documenting student placement experiences, department-wise recruitment rounds, and company technical questions.',
+    pagesCount: 61,
+    publishedAt: '2024',
     highlights: [
-      'Introduction of the 4 Wings (A-P-T-I)',
-      'Campus interview etiquette',
-      'Alumni success stories'
+      'Detailed analysis of multiple company drives',
+      'Department-wise student experiences (CSE, ISE, ECE)',
+      'High-frequency interview questions and solutions'
+    ],
+    contributors: ['APTI CLUB Team 2024']
+  },
+  {
+    id: 'chronicle-report-2024',
+    title: 'APTI Club Annual Report (2024)',
+    edition: 'Annual Report',
+    academicYear: '2023–2024',
+    coverImageUrl: '/chronicles/cover_report_2024.png',
+    pdfUrl: '/chronicles/apti_report_2024.pdf',
+    description: 'Annual Club Activity Report highlighting mock interview drives, speaker sessions, workshops, and milestones achieved across academic terms.',
+    pagesCount: 37,
+    publishedAt: '2024',
+    highlights: [
+      'Summary of mock drives and workshops conducted',
+      'Student participation numbers and achievements',
+      'Faculty advisory commendations'
     ],
     contributors: ['Department of Training & Placement, GSSSIETW']
+  },
+  {
+    id: 'chronicle-2023',
+    title: 'APTI Club Chronicle Vol. 2 (2023 Batch)',
+    edition: 'Volume 2',
+    academicYear: '2022–2023',
+    coverImageUrl: '/chronicles/cover_2023.png',
+    pdfUrl: '/chronicles/chronicle_2023.pdf',
+    description: 'Volume 2 capturing core technical subjects, coding interview preparation patterns, and placement insights from visiting recruiters.',
+    pagesCount: 34,
+    publishedAt: '2023',
+    highlights: [
+      'Introduction of technical coding modules',
+      'Group discussion strategies and extempore drills',
+      'Alumni placement journeys'
+    ],
+    contributors: ['APTI CLUB Committee 2023']
+  },
+  {
+    id: 'chronicle-2022',
+    title: 'APTI Club Newsletter Vol. 1 (2022 Genesis)',
+    edition: 'Volume 1',
+    academicYear: '2021–2022',
+    coverImageUrl: '/chronicles/cover_2022.png',
+    pdfUrl: '/chronicles/chronicle_2022.pdf',
+    description: 'The inaugural founding newsletter establishing APTI CLUB’s mission, founding team, and vision for GSSSIETW student career excellence.',
+    pagesCount: 13,
+    publishedAt: '2022',
+    highlights: [
+      'Inauguration of APTI CLUB at GSSSIETW',
+      'Establishment of the Four Wings',
+      'Orientation and foundational workshop reports'
+    ],
+    contributors: ['APTI CLUB Founding Committee 2022']
   }
 ];
 
@@ -426,25 +468,28 @@ export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
     category: 'event',
     link: '/events',
     isRead: false,
-    createdAt: 'Just now'
+    createdAt: 'Just now',
+    createdTimestamp: Date.now() - (10 * 60 * 1000)
   },
   {
     id: 'notif-2',
     title: 'New Company Guide: Deutsche Bank',
-    message: 'Analysis of 4 real student interview experiences is now published in the Placement Hub.',
+    message: 'Analysis of verified student interview experiences is now published in the Placement Hub.',
     category: 'company',
     link: '/company/deutsche-bank',
     isRead: false,
-    createdAt: '2 hours ago'
+    createdAt: '2 hours ago',
+    createdTimestamp: Date.now() - (2 * 60 * 60 * 1000)
   },
   {
     id: 'notif-3',
-    title: 'Career Catalyst Vol. 2 is Live!',
-    message: 'Read the complete 28-page placement guide online or download the official PDF.',
+    title: '5 Years of APTI Chronicles Available',
+    message: 'Explore the complete archive of APTI CLUB Chronicles from 2022 through 2026 online.',
     category: 'chronicle',
     link: '/chronicles',
     isRead: false,
-    createdAt: '1 day ago'
+    createdAt: '1 day ago',
+    createdTimestamp: Date.now() - (24 * 60 * 60 * 1000)
   },
   {
     id: 'notif-4',
@@ -453,82 +498,38 @@ export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
     category: 'event',
     link: '/events',
     isRead: true,
-    createdAt: '2 days ago'
+    createdAt: '2 days ago',
+    createdTimestamp: Date.now() - (48 * 60 * 60 * 1000)
   }
 ];
 
 export const INITIAL_TEAM: TeamMemberItem[] = [
   {
-    id: 'team-1',
-    name: 'Dr. Placement Officer',
-    designation: 'Head - Training & Placement Department',
-    wing: 'Advisory / Faculty',
-    department: 'Department of Training & Placement',
-    year: 'Faculty Advisory',
-    initials: 'PO'
-  },
-  {
-    id: 'team-2',
-    name: 'Faculty Coordinator',
-    designation: 'Faculty Mentor - APTI CLUB',
-    wing: 'Advisory / Faculty',
-    department: 'Computer Science & Engineering',
-    year: 'Faculty Advisory',
-    initials: 'FC'
-  },
-  {
-    id: 'team-3',
-    name: 'E Vennela Chowdary',
-    designation: 'APTI CLUB Lead & Chief Editor',
+    id: 'team-core-1',
+    name: 'AISHWARYA S L',
+    designation: 'APTI CLUB Core Member & Student Lead',
     wing: 'Club Head',
-    department: 'Computer Science & Engineering',
+    department: 'GSSSIETW',
     year: '2026 Batch',
-    initials: 'VC'
+    initials: 'AS'
   },
   {
-    id: 'team-4',
-    name: 'Habeeba',
-    designation: 'Vice President & Aptitude Wing Lead',
-    wing: 'Aptitude',
-    department: 'Computer Science & Engineering',
+    id: 'team-core-2',
+    name: 'CHINMAYI S',
+    designation: 'APTI CLUB Core Member & Technical Lead',
+    wing: 'Club Head',
+    department: 'GSSSIETW',
     year: '2026 Batch',
-    initials: 'HA'
+    initials: 'CS'
   },
   {
-    id: 'team-5',
-    name: 'Likhitha G',
-    designation: 'Personality Wing Lead',
-    wing: 'Personality',
-    department: 'Computer Science & Engineering',
+    id: 'team-core-3',
+    name: 'RACHANA N',
+    designation: 'APTI CLUB Core Member & Operations Lead',
+    wing: 'Club Head',
+    department: 'GSSSIETW',
     year: '2026 Batch',
-    initials: 'LG'
-  },
-  {
-    id: 'team-6',
-    name: 'Anagha G Adiga',
-    designation: 'Technical Wing Lead',
-    wing: 'Technical',
-    department: 'Computer Science & Engineering',
-    year: '2026 Batch',
-    initials: 'AA'
-  },
-  {
-    id: 'team-7',
-    name: 'Kushi B G',
-    designation: 'Interview Wing Lead',
-    wing: 'Interview',
-    department: 'Computer Science & Engineering',
-    year: '2026 Batch',
-    initials: 'KB'
-  },
-  {
-    id: 'team-8',
-    name: 'Shibha Shetty',
-    designation: 'Digital Operations & Analytics Lead',
-    wing: 'Technical',
-    department: 'CSE (AI & ML)',
-    year: '2026 Batch',
-    initials: 'SS'
+    initials: 'RN'
   }
 ];
 

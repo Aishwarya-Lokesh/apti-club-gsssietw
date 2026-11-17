@@ -3,7 +3,7 @@ import { queryKnowledgeBase } from '@/lib/chatbot-rag';
 
 export async function POST(req: NextRequest) {
   try {
-    const { query } = await req.json();
+    const { query, history } = await req.json();
 
     if (!query || typeof query !== 'string') {
       return NextResponse.json(
@@ -12,8 +12,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Run local self-contained RAG retrieval
-    const result = queryKnowledgeBase(query);
+    // Run local self-contained RAG retrieval with conversational context
+    const result = queryKnowledgeBase(query, history);
 
     return NextResponse.json({
       success: true,
